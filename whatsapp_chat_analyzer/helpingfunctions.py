@@ -36,3 +36,21 @@ def activity_map(df):
         msg_on_day.append(unidadf)
 
     return days_of_week, msg_on_day
+
+def plot_heatmap(df):
+    heatmapdf = df.pivot_table(index='day', columns='period', values='message', aggfunc='count').fillna(0)
+
+    return heatmapdf
+
+def filterWords(df):
+    msg = " ".join(df.message).lower()
+    stopword = open(r".\stop_hinglish.txt").read()
+
+    for word in msg.lower().split():
+        if word in stopword:
+            msg.replace(word,"")
+    split_txt = msg.split()
+    counter = Counter(split_txt)
+    freq_wrd = counter.most_common(8)
+
+    return msg, freq_wrd
