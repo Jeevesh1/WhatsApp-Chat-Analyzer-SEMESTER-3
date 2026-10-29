@@ -75,8 +75,10 @@ automatically, copy the local URL shown in the terminal and open it manually.
 ```text
 Project_Final/
 ├── README.md
-└── whatsapp_chat_analyzer/
-    ├── filePreprocessor.py      # Statistics and analysis functions
+└── whatsapp_chat_analyzer_remake/
+    ├── whatsappanalyzer_main.py  # Streamlit application
+    ├── filePreprocessor.py       # Converts chat text into a data table
+    ├── helpingFunctions.py       # Statistics and analysis functions
     └── stop_hinglish.txt         # Words ignored in word analysis
 ```
 
