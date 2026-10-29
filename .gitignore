@@ -1,0 +1,9 @@
+# Local Python virtual environment
+.sem3final/
+
+# Python-generated cache files
+__pycache__/
+*.pyc
+
+# Local Streamlit settings and secrets
+.streamlit/
