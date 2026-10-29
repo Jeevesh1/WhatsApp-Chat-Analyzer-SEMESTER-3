@@ -50,3 +50,35 @@ if upload_file is not None:
         with col4:
             st.title('Media Shared')
             st.header(str(t_media))
+
+        # Plotting monthly Timeline graph
+        st.title('Monthly Timeline')
+        monthdf = monthly_timeline(df)
+        fig = plt.figure()
+        plt.plot(monthdf['month'], monthdf['message'])
+        st.pyplot(fig)
+
+        # Plotting Daiyly Timeline
+        st.title('Daily Timeline')
+        dailydf = daily_activity(df)
+        fig = plt.figure()
+        plt.plot(dailydf['dateOnly'], dailydf['message'])
+        fig.autofmt_xdate()
+        st.pyplot(fig)
+        
+        # Plotting activity map
+        st.title('Activity Map')
+        days_of_week,msg_on_day = activity_map(df)
+        col1,col2 = st.columns(2)
+        with col1:
+            st.subheader('Busy Days')
+            fig = plt.figure()
+            plt.bar(days_of_week, msg_on_day)
+            fig.autofmt_xdate()
+            st.pyplot(fig)
+        with col2:
+            st.subheader('Busy Months')
+            fig = plt.figure()
+            plt.bar(monthdf['month'], monthdf['message'])
+            fig.autofmt_xdate()
+            st.pyplot(fig)
