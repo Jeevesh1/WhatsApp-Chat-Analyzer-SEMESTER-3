@@ -17,7 +17,7 @@ if upload_file is not None:
 
     #extracting all users
     user_list = df['users'].unique().tolist()
-    
+
     try: 
         user_list.remove('group notification')
     except Exception as e:
@@ -82,3 +82,10 @@ if upload_file is not None:
             plt.bar(monthdf['month'], monthdf['message'])
             fig.autofmt_xdate()
             st.pyplot(fig)
+
+        # Plotting timewise heatmap according to day
+        st.title('Weekly Activity Map')
+        fig = plt.figure(figsize=(10,5))
+        heatmapdf = plot_heatmap(df)
+        sns.heatmap(heatmapdf)
+        st.pyplot(fig)
