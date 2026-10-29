@@ -89,3 +89,28 @@ if upload_file is not None:
         heatmapdf = plot_heatmap(df)
         sns.heatmap(heatmapdf)
         st.pyplot(fig)
+
+        # most active user
+        if selected_user == 'All Users':
+            st.title("Most Busy User")
+            col1,col2 = st.columns(2)
+            mbudf = most_busy_user(df)
+            with col1:
+                fig = plt.figure()
+                plt.bar(mbudf.head()['users'], mbudf.head()['message'])
+                fig.autofmt_xdate()
+                st.pyplot(fig)
+            
+            with col2:
+                st.dataframe(mbudf)
+
+        #emojis 
+        st.title('Emojis Analysis')
+        col1, col2 = st.columns(2)
+        common_emjsdf = emoji_counter(df)
+        with col2:
+            fig = plt.figure()
+            plt.pie(common_emjsdf[1], labels=common_emjsdf[0].tolist(), autopct='%1.1f%%')
+            st.pyplot(fig)
+        with col1: 
+            st.dataframe(common_emjsdf)

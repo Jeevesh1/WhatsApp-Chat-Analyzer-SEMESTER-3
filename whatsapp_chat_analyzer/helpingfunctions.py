@@ -54,3 +54,15 @@ def filterWords(df):
     freq_wrd = counter.most_common(8)
 
     return msg, freq_wrd
+
+def most_busy_user(df):
+    mbudf = df.groupby('users').count().sort_values(by=['message'], ascending=False)['message'].reset_index()
+    return mbudf
+
+def emoji_counter(df):
+    emojilist = df['message'].apply(lambda x: ' '.join([e for e in x if e in emoji.EMOJI_DATA]))
+    emojistr = ' '.join([e for e in emojilist if e != " "])
+    counter = Counter(emojistr.split())
+    common_emjsdf = pd.DataFrame(counter.most_common(5))
+
+    return common_emjsdf
