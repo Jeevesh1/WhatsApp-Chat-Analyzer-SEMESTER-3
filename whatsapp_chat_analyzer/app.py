@@ -17,7 +17,11 @@ if upload_file is not None:
 
     #extracting all users
     user_list = df['users'].unique().tolist()
-    user_list.remove('group notification')
+    
+    try: 
+        user_list.remove('group notification')
+    except Exception as e:
+        pass
     user_list.insert(0, 'All Users')
     selected_user = st.sidebar.selectbox(user_list[0], user_list)
     bt = st.sidebar.button("Show Analysis")

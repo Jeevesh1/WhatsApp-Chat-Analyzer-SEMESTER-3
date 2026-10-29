@@ -4,15 +4,17 @@ import pandas as pd
 
 def preprocessor(data):
     #patter for separating d_np and messages from data(whatsapp file)
-    messagesFind_pattern = r"\d{1,2}/\d{1,2}/\d{1,2}.\s\d{1,2}:\d{1,2}\s\w{1,2}\s-\s"
-    dateFind_pattern = r"\d{1,2}/\d{1,2}/\d{1,2},\s\d{1,2}:\d{1,2}\s\w{1,2}"
+    messagesFind_pattern = r"\[\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{1,2}:\d{1,2}\s[APap][Mm]\]\s"
+
+    # To extract just the date-time string:
+    dateFind_pattern = r"\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{1,2}:\d{1,2}\s[APap][Mm]"
 
     messages_np = re.split(messagesFind_pattern, data)[1:]
     d_np = re.findall(dateFind_pattern, data)
     
     #creating a dataframe
     df = pd.DataFrame({'m_np': messages_np, 'd_np': d_np})
-    df['d_np'] = pd.to_datetime(df['d_np'], format = '%d/%m/%y, %I:%M %p') #converting d_np to datetime datatype
+    df['d_np'] = pd.to_datetime(df['d_np'], format="%m/%d/%y, %I:%M:%S %p") #converting d_np to datetime datatype
 
     #extracting users and messages from m_np column and adding to df
     users = []
