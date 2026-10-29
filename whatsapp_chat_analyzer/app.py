@@ -103,7 +103,7 @@ if upload_file is not None:
             
             with col2:
                 st.dataframe(mbudf)
-
+                
         #emojis 
         st.title('Emojis Analysis')
         col1, col2 = st.columns(2)
@@ -114,3 +114,22 @@ if upload_file is not None:
             st.pyplot(fig)
         with col1: 
             st.dataframe(common_emjsdf)
+
+        #WordCloud
+        st.title('Word Cloud')
+        text,freq_wrd = filterWords(df)
+        wCloud = WordCloud().generate(text)
+        fig = plt.figure()
+        plt.imshow(wCloud)
+        st.pyplot(fig)
+
+        #most common words
+        st.title('Common Words')
+        count = []
+        word = []
+        for t in freq_wrd:
+            count.append(t[1])
+            word.append(t[0])
+        fig = plt.figure()
+        plt.barh(word, count)
+        st.pyplot(fig)
