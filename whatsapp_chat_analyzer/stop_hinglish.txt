@@ -1,20 +1,3 @@
-.
-..
-...
-?
--
---
-1
-2
-3
-4
-5
-6
-7
-8
-9
-0
-a
 aadi
 aaj
 aap
@@ -180,7 +163,6 @@ could
 couldn
 couldnt
 couldn't
-d
 de
 dede
 dega
@@ -358,7 +340,6 @@ humne
 hun
 huye
 huyi
-i
 i'd
 idk
 ie
@@ -448,7 +429,6 @@ jo
 just
 jyaada
 jyada
-k
 ka
 kaafi
 kab
@@ -575,7 +555,6 @@ looking
 looks
 ltd
 lunga
-m
 maan
 maana
 maane
@@ -659,7 +638,6 @@ nothing
 novel
 now
 nowhere
-o
 obviously
 of
 off
@@ -707,7 +685,6 @@ poori
 provides
 pura
 puri
-q
 que
 quite
 raha
@@ -734,7 +711,6 @@ rhe
 rhi
 ri
 right
-s
 sa
 saara
 saare
@@ -807,7 +783,6 @@ sub
 such
 sup
 sure
-t
 tab
 tabh
 tak
@@ -1028,7 +1003,6 @@ would
 wouldn
 wouldnt
 wouldn't
-y
 ya
 yadi
 yah

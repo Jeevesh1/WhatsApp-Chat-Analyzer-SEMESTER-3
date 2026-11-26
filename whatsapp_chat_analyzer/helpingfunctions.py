@@ -2,6 +2,7 @@ import re
 import pandas as pd
 from collections import Counter
 import emoji
+import streamlit as st
 
 def general_stats(df):
     
@@ -44,12 +45,21 @@ def plot_heatmap(df):
 
 def filterWords(df):
     msg = " ".join(df.message).lower()
-    stopword = open(r".\stop_hinglish.txt").read()
+    # import os
 
-    for word in msg.lower().split():
-        if word in stopword:
-            msg.replace(word,"")
-    split_txt = msg.split()
+    # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    # stopword_path = os.path.join(BASE_DIR, "stop_hinglish.txt")
+
+    # with open(stopword_path, "r", encoding="utf-8") as f:
+    #     stopword = f.read().split()
+    #     st.write(stopword)
+    # # stopword = open(r".\stop_hinglish.txt").read()
+
+    # for word in msg.lower().split():
+    #     if word in stopword:
+    #         msg = msg.replace(word,"")
+    split_txt = msg.split(" ")
     counter = Counter(split_txt)
     freq_wrd = counter.most_common(8)
 
